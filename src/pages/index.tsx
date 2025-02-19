@@ -7,7 +7,6 @@ import { ColumnDef } from "@tanstack/react-table";
 
 export const getStaticProps = (async () => {
   const filePath = path.join(process.cwd(), "public", "cigarettes.json");
-  console.log(filePath);
   const jsonData = fs.readFileSync(filePath, "utf-8");
   const data = JSON.parse(jsonData);
   return { props: { data } };
