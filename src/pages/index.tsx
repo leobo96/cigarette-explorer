@@ -4,6 +4,8 @@ import path from "path";
 import fs from "fs";
 import { DataTable } from "@/components/table/table";
 import { ColumnDef } from "@tanstack/react-table";
+import { Button } from "@/components/button";
+import { ArrowUpDown } from "lucide-react";
 
 export const getStaticProps = (async () => {
   const filePath = path.join(process.cwd(), "public", "cigarettes.json");
@@ -18,22 +20,80 @@ export default function Home({ data }: { data: CigaretteDAO[] }) {
   const columns: ColumnDef<CigaretteDAO>[] = [
     {
       accessorKey: "name",
-      header: "Nome",
+      header: ({ column }) => {
+        return (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Nome
+            <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        );
+      },
     },
     {
       accessorKey: "nicotine_amount",
-      header: "Nicotina",
-      cell: (info) => `${info.getValue()}`,
+      header: ({ column }) => {
+        return (
+          <div className="flex justify-end">
+            <Button
+              variant="ghost"
+              onClick={() =>
+                column.toggleSorting(column.getIsSorted() === "asc")
+              }
+            >
+              Nicotina
+              <ArrowUpDown className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        );
+      },
+      cell: (info) => (
+        <div className="text-end px-4">{`${info.getValue()}`}</div>
+      ),
     },
     {
       accessorKey: "tar_amount",
-      header: "Catrame",
-      cell: (info) => `${info.getValue()}`,
+      header: ({ column }) => {
+        return (
+          <div className="flex justify-end">
+            <Button
+              variant="ghost"
+              onClick={() =>
+                column.toggleSorting(column.getIsSorted() === "asc")
+              }
+            >
+              Catrame
+              <ArrowUpDown className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        );
+      },
+      cell: (info) => (
+        <div className="text-end px-4">{`${info.getValue()}`}</div>
+      ),
     },
     {
       accessorKey: "co_amount",
-      header: "Monossido di carbonio",
-      cell: (info) => `${info.getValue()}`,
+      header: ({ column }) => {
+        return (
+          <div className="flex justify-end">
+            <Button
+              variant="ghost"
+              onClick={() =>
+                column.toggleSorting(column.getIsSorted() === "asc")
+              }
+            >
+              Monossido di carbonio
+              <ArrowUpDown className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        );
+      },
+      cell: (info) => (
+        <div className="text-end px-4">{`${info.getValue()}`}</div>
+      ),
     },
   ];
   return (
