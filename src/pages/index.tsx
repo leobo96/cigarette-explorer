@@ -38,7 +38,13 @@ export default function Home({ data }: { data: CigaretteDAO[] }) {
   ];
   return (
     <div className="container mx-auto p-8">
-      <DataTable columns={columns} data={data} />
+      <div className="flex flex-col gap-6">
+        <h1 className="text-4xl">
+          <span className="inline-block -translate-y-1">🚬</span> Cigarette
+          Explorer
+        </h1>
+        <DataTable columns={columns} data={data} />
+      </div>
     </div>
   );
 }
