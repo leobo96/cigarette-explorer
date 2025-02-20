@@ -36,5 +36,9 @@ export default function Home({ data }: { data: CigaretteDAO[] }) {
       cell: (info) => `${info.getValue()}`,
     },
   ];
-  return <DataTable columns={columns} data={data} />;
+  return (
+    <div className="container mx-auto p-8">
+      <DataTable columns={columns} data={data} />
+    </div>
+  );
 }
