@@ -20,5 +20,5 @@ export default function Home() {
     queryKey: ["cigarettes", "brand", id],
   });
 
-  return <CigarettesTable data={data.cigarettes} />;
+  return <CigarettesTable data={data?.cigarettes} />;
 }
