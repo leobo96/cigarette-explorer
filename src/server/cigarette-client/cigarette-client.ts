@@ -8,6 +8,7 @@ export type CigaretteDAO = {
   nicotine_amount: number;
   tar_amount: number;
   co_amount: number;
+  brand: string;
 };
 
 export class CigarettesClient {
@@ -64,6 +65,7 @@ export class CigarettesClient {
         nicotine_amount: Number(el[3].replace(",", ".")),
         tar_amount: Number(el[4].replace(",", ".")),
         co_amount: Number(el[5].replace(",", ".")),
+        brand: el[1].split(" ")[0].replaceAll("&", "_"),
       };
       return result;
     });
