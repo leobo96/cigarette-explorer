@@ -1,6 +1,7 @@
 import { CigaretteDAO } from "@/server/cigarette-client/cigarette-client";
 import { CigarettesRepository } from "@/server/cigarettes.repo";
 import { NextApiRequest, NextApiResponse } from "next";
+import { parseStringSearchParam } from "../../../../utils/parse-string-search-param";
 
 export type GetCigarettesByBrandsOutput = { cigarettes: CigaretteDAO[] };
 
@@ -11,16 +12,7 @@ export default async function handler(
   try {
     const repo = new CigarettesRepository();
 
-    const _id = req.query["id"];
-
-    if (!_id) throw new Error("Not found");
-
-    const id =
-      typeof _id === "string"
-        ? _id
-        : Array.isArray(_id) && _id.at(0)
-        ? _id[0]
-        : "";
+    const id = parseStringSearchParam(req.query["id"]);
 
     const data = await repo.get_by_brand(id);
 

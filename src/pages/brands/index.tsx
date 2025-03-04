@@ -1,5 +1,5 @@
 import { urls } from "../../utils/urls";
-import { GetCigarettesBrandsOutput } from "@/pages/api/brands";
+import { GetCigarettesBrandsOutput } from "@/pages/api/cigarettes/brands";
 import { endpoints } from "@/utils/endpoints";
 import { GetStaticProps } from "next";
 import Link from "next/link";
