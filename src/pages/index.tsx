@@ -3,7 +3,7 @@ import { GetAllCigarettesOutput } from "@/pages/api/cigarettes";
 import { CigarettesTable } from "../components/domain/cigarettes-table";
 import { endpoints } from "@/utils/endpoints";
 
-export const getStaticProps = (async () => {
+export const getServerSideProps = (async () => {
   const data = await fetch(endpoints.cigarettes).then((r) => r.json());
   return { props: { data } };
 }) satisfies GetStaticProps<{

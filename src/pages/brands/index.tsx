@@ -4,7 +4,7 @@ import { endpoints } from "@/utils/endpoints";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 
-export const getStaticProps = (async () => {
+export const getServerSideProps = (async () => {
   const data = await fetch(endpoints.brands).then((r) => r.json());
   return { props: { data } };
 }) satisfies GetStaticProps<{
