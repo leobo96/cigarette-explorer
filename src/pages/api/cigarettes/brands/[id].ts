@@ -12,6 +12,10 @@ export default async function handler(
   try {
     const repo = new CigarettesRepository();
 
+    const _id = req.query["id"];
+
+    if (!_id) throw new Error("Not found");
+
     const id = parseStringSearchParam(req.query["id"]);
 
     const data = await repo.get_by_brand(id);
